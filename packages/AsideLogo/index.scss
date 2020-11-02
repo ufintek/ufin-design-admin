@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+@import '~scss/themes/index.scss';
+
+.ufin-sider-menu-logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: calc((#{$layout-header--height} - #{$layout-header--line-height}) / 2) 16px;
+  line-height: $layout-header--line-height;
+  cursor: pointer;
+  overflow: hidden;
+
+  &>a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: $layout-header--line-height;
+    text-decoration: none;
+
+    &>img {
+      display: inline-block;
+      max-height: $layout-header--line-height;
+      vertical-align: middle;
+      transition: height .2s;
+      max-width: $layout-aside--width-collapse - 32px;
+    }
+
+    &>h1 {
+      display: inline-block;
+      height: $layout-header--line-height;
+      margin: 0 0 0 12px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: $layout-header--line-height;
+      vertical-align: middle;
+      animation: fade-in;
+      animation-duration: .2s;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+  }
+
+
+  &.el-menu--collapse {
+    h1 {
+      display: none;
+    }
+  }
+
+}

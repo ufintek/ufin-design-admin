@@ -1,0 +1,36 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "loose": false,
+                "modules": "commonjs",
+                "spec": true,
+                "targets": {
+                    "browsers": [
+                        "last 3 Chrome versions",
+                        "last 3 Firefox versions",
+                        "Safari >= 10",
+                        "Explorer >= 11",
+                        "Edge >= 12",
+                        "iOS >= 10",
+                        "Android >= 6"
+                    ]
+                },
+                "useBuiltIns": "usage",
+                "debug": false
+            }
+        ]
+    ],
+    "plugins": [
+        "dynamic-import-node",
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-transform-property-mutators",
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-transform-classes",
+        "@babel/plugin-syntax-jsx",
+        "transform-vue-jsx"
+    ],
+    "comments": false
+}

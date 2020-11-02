@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+@import '~scss/themes/index.scss';
+
+
+$component-name: #{$component-prefix}+'page';
+
+.#{$component-name} {
+  &__container {
+    padding: $page--padding;
+    background-color: $layout--background-color
+  }
+
+  &-table {
+    &__search {
+      margin-bottom: 16px;
+      padding: 24px 24px 0;
+      background: #fff;
+    }
+  }
+}

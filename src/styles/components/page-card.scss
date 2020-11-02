@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+@import '~scss/themes/index.scss';
+
+
+$component-name: #{$component-prefix}+'page-card';
+
+.#{$component-name} {
+  padding-bottom: 0;
+  overflow: auto;
+  background-color: #fff;
+
+  &+& {
+    margin-top: 16px;
+  }
+
+  &.#{$component-name}--column-two {
+    display: flex;
+    flex-direction: row;
+
+    .ufin-card-column-tow-col {
+      flex: 1;
+
+      &:first-child {
+        flex: 0 0 200px;
+      }
+    }
+  }
+
+  .#{$component-name}--query {
+    padding: 16px;
+    padding-bottom: 0;
+
+    .el-form-item--mini.el-form-item,
+    .el-form-item--small.el-form-item {
+      margin-bottom: 16px;
+    }
+  }
+
+  .#{$component-name}--query+.#{$component-name}--table {
+    padding-top: 0;
+  }
+
+  .#{$component-name}--table {
+    padding: 0;
+
+    .yfin-table-toolbar {
+      height: 46px;
+    }
+  }
+}

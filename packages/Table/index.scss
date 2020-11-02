@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+@import '~scss/themes/index.scss';
+
+$component-name: #{$component-prefix}+'table';
+
+.#{$component-name} {}

@@ -1,0 +1,26 @@
+@import '../../helpers/_color.scss';
+
+/*
+    主色
+*/
+
+$primary-1: #e6fff3;
+$primary-2: #b8ffdf;
+$primary-3: #88f2c6;
+$primary-4: #5ce6b1;
+$primary-5: #34d99f;
+$primary-6: #10cd90;
+$primary-7: #05a678;
+$primary-8: #008060;
+$primary-9: #005946;
+$primary-10: #00332a;
+
+// -------- Colors -----------
+$base--color-primary: $primary-6;
+$base--color-info: #909399;
+$base--color-success: $green-6;
+$base--color-warning: $yellow-6;
+$base--color-danger: $red-6;
+$base--color-processing: $base--color-primary;
+$base--color-white: $grey-1;
+$base--color-disabled: #f5f5f5;

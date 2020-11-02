@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+@import '~scss/themes/index.scss';
+
+$component-name: #{$component-prefix}+'grid';
+
+.#{$component-name} {}
+
+$component-name-grid-content: #{$component-prefix}+'grid-content';
+
+
+.#{$component-name-grid-content} {
+
+  width: 100%;
+
+  &-children {}
+
+}

@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+@import '~scss/themes/index.scss';
+
+// 组件名称
+$component-name : #{$component-prefix}+'menutabs';
+
+
+.#{$component-name} {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+
+  & > &__menu {
+    position: fixed;
+    z-index: 5;
+    width: 110px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    text-align: center;
+
+    .el-menu-item {
+      height: 36px;
+      line-height: 36px;
+      padding-right: 0;
+    }
+  }
+
+  &__menu-tabs {
+    padding-top: 4px;
+    background-color: $layout--background-color;
+
+    &.el-tabs.el-tabs--card.el-tabs--top .el-tabs__header {
+      margin-bottom: 0;
+      border-bottom: 0;
+      margin-left: 10px;
+
+      .el-tabs__nav {
+        border: none;
+      }
+
+      .el-tabs__item {
+        background-color: #e6e6e6;
+        border: 1px solid #e1e1e1;
+        border-bottom: 0;
+        border-radius: 4px 4px 0 0;
+        margin-right: 4px;
+        font-size: 14px;
+        color: #666;
+        line-height: 32px;
+        height: 32px;
+        padding: 0 10px 0 12px;
+
+        &.is-active {
+          background-color: #fff;
+        }
+      }
+    }
+
+    &-tab{
+      &.is-home{
+
+      }
+    }
+  }
+}

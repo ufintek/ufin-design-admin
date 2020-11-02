@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+@import '~scss/themes/index.scss';
+// 组件名称
+$component-name : #{$component-prefix}+'aside';
+
+.#{$component-name} {
+  position: relative;
+  min-width: 0;
+  min-height: 100vh;
+  transition: all .2s;
+
+  // 暗黑模式
+  &-dark {
+    background: var(--aside-background);
+  }
+
+  .el-menu {
+    border-right: none;
+  }
+
+  &--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
+
+// 移动端模式
+.#{$component-name}-drawer {
+  width: 208px;
+
+  .el-drawer {
+    width: 100% !important;
+  }
+
+  .el-drawer__header {
+    display: none;
+  }
+}
+
+.el-menu--collapse {
+  width: $layout-aside--width-collapse;
+
+  .el-submenu__title {
+    padding: 0 calc((#{$layout-aside--width-collapse} - 24px) / 2);
+  }
+
+  .el-menu-item {
+    .el-tooltip {
+      text-align: center;
+    }
+  }
+}

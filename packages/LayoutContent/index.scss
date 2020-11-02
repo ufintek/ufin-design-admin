@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+@import '~scss/themes/index.scss';
+
+// 组件名称
+$component-name : #{$component-prefix}+'layout-content';
+
+
+.#{$component-name} {
+  position: relative;
+  flex: 1;
+  height: calc(100vh - 3px);
+  overflow: hidden;
+
+  &--container {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &--main {
+    flex: 1;
+    background-color: $layout--background-color;
+  }
+
+
+}

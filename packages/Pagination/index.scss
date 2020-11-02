@@ -1,0 +1,47 @@
+@charset "UTF-8";
+@import '~scss/themes/index.scss';
+@import '~scss/helpers/_mixins.scss';
+@import '~scss/helpers/_utils.scss';
+@import '~scss/helpers/_config.scss';
+
+/**********************************
+  查询列表页面 分页部分样式
+**********************************/
+// 组件名称
+$component-name : #{$component-prefix}+'pagination-footer';
+
+.#{$component-name} {
+  padding: 16px 20px;
+  font-size: $base--font-size;
+  line-height: $base--line-height;
+  color: $base--color-text;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__extends {
+    flex: 1;
+  }
+
+  &__pagination {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .pagination-num {
+      flex: 0 0 auto;
+    }
+
+    .el-pagination {
+      flex: 0;
+      text-align: right;
+    }
+  }
+
+}

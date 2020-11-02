@@ -1,0 +1,32 @@
+// layout
+
+// -------------- header ---------------
+// header的高度
+$layout-header--height : 50px;
+// header的行高
+$layout-header--line-height : 32px;
+
+// -------------- 页签 ---------------
+$layout-menutabs--height : 35px;
+
+// -------------- 页脚footer ---------------
+$layout-footer--height : 50px;
+
+// -------------- 侧边栏 ---------------
+// 主题 侧边栏背景色
+$layout--aside-background: #001529;
+
+$layout-aside--width-collapse : 64px;
+
+$layout-aside--width : 256px;
+
+// 主题背景色
+$layout--background-color: #f0f2f5;
+
+// 页面内边距
+$page--padding : 24px;
+
+
+$card--padding-h : $page--padding;
+
+$card--padding-v : 32px;

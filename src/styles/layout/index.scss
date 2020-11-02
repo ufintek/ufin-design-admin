@@ -1,0 +1,131 @@
+@charset "UTF-8";
+@import '../helpers/_mixins.scss';
+@import '../helpers/_utils.scss';
+@import '../helpers/_config.scss';
+
+.ui-layout {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  background: $base--background-color;
+  min-height: 0;
+  // 修复 - element-ui el-table在flex自适应的时候不能适应宽度
+  overflow: auto;
+  &,
+  & * {
+    box-sizing: border-box;
+  }
+
+  // 有侧边栏的情况
+  &.has-sider {
+    flex-direction: row;
+  }
+
+  .ui-layout-sider {
+    position: relative;
+    background: var(--aside-background);
+    transition: all 0.2s;
+    min-height: 100vh;
+    z-index: 10;
+    &.is-menusider {
+      position: relative;
+      box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+      min-height: 100vh;
+    }
+    // 菜单栏是否是固定
+    &--fix {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  //  页头
+  .ui-layout-header {
+    background: $base--background-color;
+    height: calc(var(--header-height) + var(--content-tabs-height));
+    line-height: calc(var(--header-height) + var(--content-tabs-height));
+    transition: all 0.2s ease-in-out;
+    // fixed模式
+    &--fix {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 256px;
+      z-index: 11;
+      // 置顶顶栏的情况下 菜单栏收起
+      &.ui-layout-header--fix-collapse {
+        left: $menu--min-width;
+      }
+      &.ui-layout-header--stick {
+        left: 0;
+      }
+    }
+  }
+
+  // inside
+  .ui-layout-inside {
+    min-height: 100vh;
+    transition: all 0.2s ease-in-out;
+    // 内容 中侧边栏固定--那么就需要padding-left
+    &--fix-with-sider {
+      padding-left: 256px;
+
+      &.ui-layout-inside--menu-collapse {
+        padding-left: $menu--min-width;
+      }
+    }
+  }
+  // 页面路径面包屑
+  .layout-breadcrumb {
+    display: block;
+    padding-left: 20px;
+  }
+  .layout-breadcrumb + .ui-layout-content {
+    .ui-container-component {
+      padding-top: 0 !important;
+    }
+  }
+  .ui-layout-content {
+    position: relative;
+    flex: 1 1 auto;
+
+    &.ui-layout-content--fix-with-header {
+      padding-top: calc(var(--header-height) + var(--content-tabs-height));
+    }
+  }
+
+  .ui-layout-content.ui-layout-content__base {
+    margin: 24px;
+    // padding-top: 64px;
+  }
+
+  &.is-sider.is-siderhorizontal {
+    .ui-layout-header {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .ui-layout-sider {
+      flex: 1 1 auto;
+      height: $base--header-height;
+      min-height: $base--header-height;
+      overflow: hidden;
+      .menusider-wrapper {
+      }
+    }
+
+    .ui-menusider {
+      flex: 1 1 auto;
+      max-width: auto;
+      min-width: auto;
+    }
+    .menusider-logo {
+      padding: 0 20px;
+    }
+  }
+}
+
+.c-base-header {
+  margin: 0 0 16px 0;
+}

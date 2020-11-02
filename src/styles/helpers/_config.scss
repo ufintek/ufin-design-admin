@@ -1,0 +1,18 @@
+ @charset 'utf-8';
+
+
+ /*
+    这边设计一些全局系统变量
+*/
+
+ // 组件前缀
+$component-prefix: 'ufin-';
+
+ // 页面样式前缀
+$page-prefix : 'ucall-';
+
+$element-separator: '__';
+
+$modifier-separator: '--';
+
+$state-prefix: 'is-';

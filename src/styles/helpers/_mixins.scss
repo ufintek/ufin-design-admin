@@ -1,0 +1,380 @@
+@charset "UTF-8";
+@import "./_config.scss";
+@import "~scss/helpers/_functions.scss";
+@import "~scss/themes/index.scss";
+
+/*
+    生成 布局样式
+    将页面分割为几个大块，通常有头部、主体、主栏、侧栏、尾部等！
+ */
+
+@mixin g($block) {
+    $GRID: $--common-gridPrefix + "-" + $block !global;
+    .#{$GRID} {
+        @content;
+    }
+}
+
+@mixin ge($element) {
+    $currentSelector: $GRID + "__" + $element;
+    .#{$currentSelector} {
+        @content;
+    }
+}
+
+
+/*
+    生成 模块空间
+    通常是一个语义化的可以重复使用的较大的整体！比如导航、登录、注册、各种列表、评论、搜索等！
+ */
+
+@mixin m($block) {
+    $ROOT: $--common-modulePrefix + "-" + $block !global;
+    .#{$ROOT} {
+        @content;
+    }
+}
+
+@mixin me($element) {
+    $currentSelector: $ROOT + "__" + $element;
+    .#{$currentSelector} {
+        @content;
+    }
+}
+
+
+/*
+    生成一个组件
+    通常是一个不可再分的较为小巧的个体，通常被重复用于各种模块中！比如按钮、输入框、loading、图标等！
+ */
+
+@mixin c($block) {
+    $ROOTCOMPONENT: $--common-componentPrefix + "-" + $block !global;
+    $COMPONENT: $--common-componentPrefix + "-" + $block !global;
+    $ROOT: $block !global;
+    .#{$ROOTCOMPONENT} {
+        @content;
+    }
+}
+
+@mixin ce($element) {
+    $currentSelector: $ROOTCOMPONENT + "-" + $element;
+    $COMPONENT: $currentSelector !global;
+    .#{$currentSelector} {
+        @content;
+    }
+}
+
+@mixin cee($element) {
+    $currentSelector: $COMPONENT + "-" + $element;
+    $COMPONENT: $currentSelector;
+    .#{$currentSelector} {
+        @content;
+    }
+}
+
+@mixin cm($modifier) {
+    $currentSelector: $ROOTCOMPONENT + "--" + $modifier;
+    .#{$currentSelector} {
+        @content;
+    }
+}
+
+@mixin cd($element) {
+    $currentSelector: $ROOT + "-" + $element;
+    $CDCOMPONENT: $currentSelector !global;
+    .#{$currentSelector} {
+        @content;
+    }
+}
+
+@mixin cde($element) {
+    $currentSelector: $CDCOMPONENT + "-" + $element;
+    // $CDCOMPONENT : $currentSelector !global;
+    .#{$currentSelector} {
+        @content;
+    }
+}
+
+@mixin cdm($modifier) {
+    $currentSelector: $CDCOMPONENT + "--" + $modifier;
+    & .#{$currentSelector} {
+        @content;
+    }
+}
+
+@mixin cd_m($modifier) {
+    $currentSelector: $CDCOMPONENT + "--" + $modifier;
+    &.#{$currentSelector} {
+        @content;
+    }
+}
+
+// @mixin c($block) {
+//     $COMPONENT: $--common-componentPrefix + "-" + $block !global;
+//     .#{$COMPONENT} {
+//         @content;
+//     }
+// }
+// @mixin ce($block) {
+//     $currentSelector: $COMPONENT + "__" + $block;
+//     .#{$currentSelector} {
+//         @content;
+//     }
+// }
+
+/*
+  生成某个组件的修饰符 是改变某个块的外观的标志
+  @include m(primary)  => .el-button--primary{}
+  #el-button{ @include m([primary,success])}   => #el-button--primary,#el-button--success{}
+ */
+
+@mixin componentState($state) {
+    $selector: &;
+    $currentSelector: "";
+    @each $unit in $modifier {
+        $currentSelector: #{$currentSelector + & + $modifier-separator + $unit + ","};
+    }
+    @at-root {
+        #{$currentSelector} {
+            @content;
+        }
+    }
+}
+
+
+/*
+  状态管理
+  @include when(disabled){}   =>   el-button.is-disabled{}
+ */
+
+@mixin when($state) {
+    @at-root {
+        &.#{$--common-statePrefix + $state} {
+            @content;
+        }
+    }
+}
+
+
+/*
+    生成一个功能样式
+    为方便一些常用样式的使用，我们将这些使用率较高的样式剥离出来，按需使用，通常这些选择器具有固定样式表现，比如清除浮动等！不可滥用！
+    @include func(clear)  =>  .f-clear  //清除浮动
+ */
+
+@mixin f($block) {
+    $FUNCTION: $--common-functionPrefix + "-" + $block;
+    $FUNCTION_BLOCK: $block !global;
+    .#{$FUNCTION} {
+        @content;
+    }
+}
+
+@mixin fm($element) {
+    $currentSelector: $FUNCTION_BLOCK + "-" + $element;
+    &.#{$currentSelector} {
+        @content;
+    }
+}
+
+
+/*
+    生成一个公共样式
+    为方便一些常用样式的使用，我们将这些使用率较高的样式剥离出来，按需使用，通常这些选择器具有固定样式表现，比如清除浮动等！不可滥用！
+
+ */
+
+@mixin ui($block) {
+    $UI: $--common-baseComponent + "-" + $block;
+    $UI_BLOCK: $block !global;
+    .#{$UI} {
+        @content;
+    }
+}
+
+@mixin uie($element) {
+    $currentSelector: $UI_BLOCK + "-" + $element;
+    &.#{$currentSelector} {
+        @content;
+    }
+}
+
+
+
+/* Break-points
+ -------------------------- */
+
+@mixin res($key, $map: $--breakpoints) {
+    // 循环断点Map，如果存在则返回
+    @if map-has-key($map, $key) {
+        @media only screen and #{inspect(map-get($map, $key))} {
+            @content;
+        }
+    }
+    @else {
+        @warn "Undefeined points: `#{$map}`";
+    }
+}
+
+
+/* Scrollbar
+ -------------------------- */
+
+@mixin scroll-bar {
+    $scrollbar-scrollbar-thumb--background: #b4bccc;
+    $scrollbar-track--background: #fff;
+    &::-webkit-scrollbar {
+        z-index: 11;
+        width: 6px;
+        &:horizontal {
+            height: 6px;
+        }
+        &-thumb {
+            border-radius: 5px;
+            width: 6px;
+            background: $scrollbar-scrollbar-thumb--background;
+        }
+        &-corner {
+            background: $scrollbar-track--background;
+        }
+        &-track {
+            background: $scrollbar-track--background;
+            &-piece {
+                background: $scrollbar-track--background;
+                width: 6px;
+            }
+        }
+    }
+}
+
+
+/* Placeholder
+ -------------------------- */
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content
+    }
+    &::-moz-placeholder {
+        @content
+    }
+    &:-ms-input-placeholder {
+        @content
+    }
+};
+
+
+@mixin b($block) {
+    $B: $namespace+'-'+$block !global;
+    .#{$B} {
+        @content;
+    }
+}
+
+@mixin e($element) {
+    $E: $element !global;
+    $selector: &;
+    $currentSelector: "";
+    @each $unit in $element {
+        $currentSelector: #{$currentSelector + "." + $B + $element-separator + $unit + ","};
+    }
+    @if hitAllSpecialNestRule($selector) {
+        @at-root {
+            #{$selector} {
+                #{$currentSelector} {
+                    @content;
+                }
+            }
+        }
+    }
+    @else {
+        @at-root {
+            #{$currentSelector} {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin m($modifier) {
+    $selector: &;
+    $currentSelector: "";
+    @each $unit in $modifier {
+        $currentSelector: #{$currentSelector + & + $modifier-separator + $unit + ","};
+    }
+    @at-root {
+        #{$currentSelector} {
+            @content;
+        }
+    }
+}
+
+@mixin configurable-m($modifier, $E-flag: false) {
+    $selector: &;
+    $interpolation: '';
+    @if $E-flag {
+        $interpolation: $element-separator + $E-flag;
+    }
+    @at-root {
+        #{$selector} {
+            .#{$B+$interpolation+$modifier-separator+$modifier} {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin spec-selector($specSelector: '', $element: $E, $modifier: false, $block: $B) {
+    $modifierCombo: '';
+    @if $modifier {
+        $modifierCombo: $modifier-separator + $modifier;
+    }
+    @at-root {
+        #{&}#{$specSelector}.#{$block+$element-separator+$element+$modifierCombo} {
+            @content
+        }
+    }
+};
+
+@mixin meb($modifier: false, $element: $E, $block: $B) {
+    $selector: &;
+    $modifierCombo: '';
+    @if $modifier {
+        $modifierCombo: $modifier-separator + $modifier;
+    }
+    @at-root {
+        #{$selector} {
+            .#{$block+$element-separator+$element+$modifierCombo} {
+                @content
+            }
+        }
+    }
+};
+
+// @mixin when($state) {
+//     @at-root {
+//         &.#{$state-prefix + $state} {
+//             @content;
+//         }
+//     }
+// }
+
+@mixin extend-rule($name) {
+    @extend #{'%shared-'+$name};
+}
+
+@mixin share-rule($name) {
+    $rule-name: '%shared-'+$name;
+    @at-root #{$rule-name} {
+        @content
+    }
+}
+
+@mixin pseudo($pseudo) {
+    @at-root #{&}#{':#{$pseudo}'} {
+ @content
+}
+
+
+}

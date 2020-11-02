@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+@import '~scss/themes/index.scss';
+
+$component-name: #{$component-prefix}+'dialog';
+
+.#{$component-name} {
+  &__footer {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    margin-top: 10px;
+
+    .el-button+.el-button {
+      margin-left: 40px;
+    }
+  }
+}

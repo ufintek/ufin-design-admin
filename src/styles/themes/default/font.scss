@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+/*
+
+  在ufin-admin 中对于字体主要分为以下几个方面
+
+  在大小方面
+    主要分为 5 中
+
+    辅助字体   12px     20px
+    正文(小)   13px     22px
+    正文       14px     22px
+    小标题     16px     24px
+    标题       18px     26px
+    主标题     20px     28px
+
+  在体现方面，主要分为以下几种
+    主标题
+
+
+ */
+
+
+
+// 字体相关
+$base--font-family: '"Chinese Quote", -apple-system, BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"';
+$base--font-family-no-number: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif';
+
+// 字体的大小
+$base--font-size-large: 18px;
+
+$base--font-size: 14px;
+
+$base--font-size-small: 12px;
+
+$base--font-size-mini: 12px;
+
+// 字体的行高
+$base--line-height-large: 26px;
+$base--line-height: 22px;
+$base--line-height-small: 20px;
+$base--line-height-mini: 20px;
+
+// 浅色背景下
+$base--color-title: rgba(#000, 0.85);
+// 主要文字色彩
+$base--color-text-main: rgba(#000, 0.85);
+// 常规文字色彩
+$base--color-text: rgba(#000, 0.65);
+// 次要文字色彩
+$base--color-text-minor: rgba(#000, 0.45);
+// 占位文字色彩
+$base--color-text-placeholder: #c0c4cc;
+// 无效文字色彩
+$base--color-text-disabled: rgba(#000, 0.25);
+// 边框色彩
+$base--color-border: rgba(#000, 0.15);
+// 分割线 色彩
+$base--color-dividers: rgba(#000, 0.9);
+// 背景色彩
+$base--color-background: rgba(#000, 0.4);
+// 表格头部背景色
+$base--color-tableheader: rgba(#000, 0.2);
+
+$base--color-text-dark: rgba(#fff, 0.85);
+
+$base--color-text-secondary-dark: rgba(#fff, 0.65);
+
+$base--color-text-hover: rgba($base--color-primary, 0.8);
+
+$base--color-text-active: $base--color-primary;
+
+$base--color-text-secondary: $base--color-text-minor;
+
+$base--color-heading-dark: rgba(#fff, 0.1);

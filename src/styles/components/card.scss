@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+@import '~scss/themes/index.scss';
+
+
+$component-name: #{$component-prefix}+'card';
+
+
+
+.#{$component-name} {
+  padding: $card--padding-h $card--padding-v;
+  background-color: $base--color-white;
+  overflow: auto;
+
+  &+& {
+    margin-top: $page--padding;
+  }
+
+
+
+  .#{$component-name}__search {
+    &-form {}
+  }
+
+  &.#{$component-name}--form {
+    padding-bottom: calc(#{$page--padding} - 18px);
+  }
+
+  &.#{$component-name}--full {
+    padding: 0;
+  }
+
+  /****************************************************
+   *   表格类型的Card
+   ***************************************************/
+  &--table {
+    padding: 0;
+  }
+}

@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+@import '~scss/themes/index.scss';
+
+$component-name: #{$component-prefix}+'toolbar';
+
+.#{$component-name} {
+  /* height: 36px; */
+  position: relative;
+  margin-bottom: 20px;
+
+  &.#{$component-name}--border-bottom {
+    height: 57px;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #c9cddc;
+  }
+
+  &.#{$component-name}--top {
+    margin-top: 22px;
+
+  }
+
+  .operate {
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+  }
+}

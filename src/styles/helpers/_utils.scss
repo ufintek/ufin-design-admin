@@ -1,0 +1,276 @@
+@charset "UTF-8";
+
+@import './_config.scss';
+@import '~scss/themes/index.scss';
+
+/**
+    设置文字是否能被选中
+
+    支持的属性为两种 : none | text
+    none : 文字不可以被选中 (默认)
+    text : 文字可以被选中，系统内置属性
+
+    @example
+
+    @include utils-user-select()
+    @include utils-user-select(none)
+*/
+@mixin utils-user-select($value: none) {
+  -moz-user-select: $value;
+  -webkit-user-select: $value;
+  -ms-user-select: $value;
+}
+
+/**
+    清除浮动方法
+
+    @注
+      需要借助 ::before 和 ::after 伪元素
+
+    @example
+
+    @include utils-clearfix()
+
+*/
+@mixin utils-clearfix {
+  $selector: &;
+
+  @at-root {
+
+    #{$selector}::before,
+    #{$selector}::after {
+      display: table;
+      content: '';
+    }
+
+    #{$selector}::after {
+      clear: both;
+    }
+  }
+}
+
+/**
+  文本当行省略方法
+
+  @example
+
+  @include utils-ellipsis()
+
+*/
+@mixin utils-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin utils-single-row {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis;
+  -moz-text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin utils-multi-row($row: 2, $width: 100%) {
+  width: $width;
+  height: auto;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: $row;
+  /*! autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: normal;
+  //
+  // & {
+  //     position: relative;
+  //     line-height: 20px;
+  //     max-height: 60px;
+  //     overflow: hidden;
+  //     white-space: normal;
+  // }
+  // &::after {
+  //     content: "...";
+  //     position: absolute;
+  //     bottom: 0;
+  //     right: 0;
+  //     padding-left: 40px;
+  //     background: -webkit-linear-gradient(left, transparent, #fff 55%);
+  //     background: -o-linear-gradient(right, transparent, #fff 55%);
+  //     background: -moz-linear-gradient(right, transparent, #fff 55%);
+  //     background: linear-gradient(to right, transparent, #fff 55%);
+  // }
+}
+
+@mixin utils-center() {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin utils-vertical-center {
+  $selector: &;
+
+  @at-root {
+    #{$selector}::after {
+      display: inline-block;
+      content: '';
+      height: 100%;
+      vertical-align: middle;
+    }
+  }
+}
+
+/*
+    定义滚动条属性
+
+    @include scroll-bar()
+ */
+
+@mixin scroll-bar($width: 10px) {
+
+  &::-webkit-scrollbar {
+    z-index: 11;
+    width: $width;
+    cursor: pointer;
+
+    &:horizontal {
+      height: $width;
+    }
+
+    &-thumb {
+      border-radius: $width/2;
+      width: $width;
+      background: $scrollbar-scrollbar-thumb--background;
+    }
+
+    &-corner {
+      background: $scrollbar-track--background;
+    }
+
+    &-track {
+      background: $scrollbar-track--background;
+
+      &-piece {
+        background: $scrollbar-track--background;
+        width: $width;
+      }
+    }
+  }
+}
+
+/*
+    清除浮动样式
+    使用伪元素来清除浮动
+    不能使用情况：元素需要使用after伪元素 此时使用.f-clearfix元素
+ */
+
+@mixin clear() {
+  &::after {
+    content: ''; //设置内容为空
+    height: 0; //高度为0
+    line-height: 0; //行高为0
+    display: block; //将文本转为块级元素
+    visibility: hidden; //将元素隐藏
+    clear: both; //清除浮动
+  }
+
+  & {
+    zoom: 1; //为了兼容IE
+  }
+}
+
+/*
+    非第一个子元素 添加marginTop样式
+ */
+
+@mixin not-first($block, $top: $base--margin-md) {
+  $selector: $block;
+
+  &>#{$selector} {
+    margin-top: $top;
+    @content;
+  }
+
+  &>#{$selector}:first-child {
+    margin-top: 0;
+  }
+}
+
+/*
+    主要文字 样式
+*/
+
+@mixin text-main {
+  color: $base--color-text-main;
+  font-size: $base--font-size-large;
+  font-weight: 800;
+}
+
+/*
+    正常文字 样式
+*/
+
+@mixin text-normal {
+  color: $base--color-text;
+  font-size: $base--font-size;
+}
+
+/*
+    次要文字 样式
+*/
+
+@mixin text-minor {
+  color: $base--color-text-minor;
+  font-size: $base--font-size-sm;
+  font-weight: 500;
+}
+
+@mixin btn-a {
+  color: $base--color-text-main;
+  cursor: pointer;
+
+  &:hover {
+    color: $base--color-text-hover;
+  }
+
+  &:focus,
+  &:active {
+    color: $base--color-text-active;
+  }
+}
+
+@mixin m-text {
+  color: $base--color-text;
+  font-size: $base--font-size;
+}
+
+@mixin m-flex {
+  position: relative;
+  -webkit-box-flex: 1;
+  -ms-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+/* box-shadow 阴影效果设置 默认为 theme中的$base--box-shadow*/
+
+@mixin m-boxShadow($value: $base--box-shadow) {
+  -moz-box-shadow: $value;
+  /* For Firefox3.6+ */
+  -webkit-box-shadow: $value;
+  /* For Chrome5+, Safari5+ */
+  box-shadow: $value;
+  /* For Latest Opera */
+}
+
+@mixin m-icon($fontSize: $base--font-size) {
+  font-size: $fontSize;
+  // color: $base--color-text;
+}

@@ -1,0 +1,31 @@
+@charset "UTF-8";
+@import '../themes/index.scss';
+@import '../helpers/_mixins.scss';
+@import '../helpers/_utils.scss';
+@import '../helpers/_config.scss';
+
+#app,
+.screen-theme,
+body,
+html {
+  height: 100%;
+  font-size: 16px;
+
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', SimSun, sans-serif;
+  // 当绘制文本时，浏览器会侧重文本的可读性（清晰度）
+  text-rendering: optimizeLegibility;
+  // 对字体进行抗锯齿渲染可以使字体看起来会更清晰舒服
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+
+}
+
+* {
+  @include scroll-bar(10px);
+}
