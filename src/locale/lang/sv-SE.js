@@ -1,106 +1,120 @@
-import setLang from '../lang';
-
-const lang = {
-    i: {
-        locale: 'sv-SE',
-        select: {
-            placeholder: 'Välj',
-            noMatch: 'Ingen träff',
-            loading: 'Laddar'
-        },
-        table: {
-            noDataText: 'Ingen data',
-            noFilteredDataText: 'Ingen filter data',
-            confirmFilter: 'Bekräfta',
-            resetFilter: 'Återställ filter',
-            clearFilter: 'Rensa filter',
-            sumText: 'Sum'
-        },
-        datepicker: {
-            selectDate: 'Välj datum',
-            selectTime: 'Välj tidpunkt',
-            startTime: 'Start tid',
-            endTime: 'Slut tid',
-            clear: 'Rensa',
-            ok: 'Ok',
-            datePanelLabel: '[mmmm] [yyyy]',
-            month: 'Månad',
-            month1: 'Januari',
-            month2: 'Februari',
-            month3: 'Mars',
-            month4: 'April',
-            month5: 'Maj',
-            month6: 'Juni',
-            month7: 'Juli',
-            month8: 'Augusti',
-            month9: 'September',
-            month10: 'Oktober',
-            month11: 'November',
-            month12: 'December',
-            year: 'År',
-            weekStartDay: '1',
-            weeks: {
-                sun: 'Sön',
-                mon: 'Mån',
-                tue: 'Tis',
-                wed: 'Ons',
-                thu: 'Tor',
-                fri: 'Fre',
-                sat: 'Lör'
-            },
-            months: {
-                m1: 'Jan',
-                m2: 'Feb',
-                m3: 'Mar',
-                m4: 'Apr',
-                m5: 'Maj',
-                m6: 'Jun',
-                m7: 'Jul',
-                m8: 'Aug',
-                m9: 'Sep',
-                m10: 'Okt',
-                m11: 'Nov',
-                m12: 'Dec'
-            }
-        },
-        transfer: {
-            titles: {
-                source: 'Källa',
-                target: 'Mål'
-            },
-            filterPlaceholder: 'Sök här',
-            notFoundText: 'Hittade inte'
-        },
-        modal: {
-            okText: 'Ok',
-            cancelText: 'Avbryt'
-        },
-        poptip: {
-            okText: 'Ok',
-            cancelText: 'Avbryt'
-        },
-        page: {
-            prev: 'Föregående sida',
-            next: 'Nästa sida',
-            total: 'Totalt',
-            item: 'objekt',
-            items: 'objekt',
-            prev5: 'Föregående 5 sidor',
-            next5: 'Nästa 5 sidor',
-            page: '/page',
-            goto: 'Gå till',
-            p: ''
-        },
-        rate: {
-            star: 'Stjärna',
-            stars: 'Stjärnor'
-        },
-        tree: {
-            emptyText: 'Ingen data'
-        }
+export default {
+  el: {
+    colorpicker: {
+      confirm: 'OK',
+      clear: 'Töm'
+    },
+    datepicker: {
+      now: 'Nu',
+      today: 'Idag',
+      cancel: 'Avbryt',
+      clear: 'Töm',
+      confirm: 'OK',
+      selectDate: 'Välj datum',
+      selectTime: 'Välj tid',
+      startDate: 'Startdatum',
+      startTime: 'Starttid',
+      endDate: 'Slutdatum',
+      endTime: 'Sluttid',
+      prevYear: 'Föregående år',
+      nextYear: 'Nästa år',
+      prevMonth: 'Föregående månad',
+      nextMonth: 'Nästa månad',
+      year: '',
+      month1: 'Januari',
+      month2: 'Februari',
+      month3: 'Mars',
+      month4: 'April',
+      month5: 'Maj',
+      month6: 'Juni',
+      month7: 'Juli',
+      month8: 'Augusti',
+      month9: 'September',
+      month10: 'Oktober',
+      month11: 'November',
+      month12: 'December',
+      // week: 'week',
+      weeks: {
+        sun: 'Sön',
+        mon: 'Mån',
+        tue: 'Tis',
+        wed: 'Ons',
+        thu: 'Tor',
+        fri: 'Fre',
+        sat: 'Lör'
+      },
+      months: {
+        jan: 'Jan',
+        feb: 'Feb',
+        mar: 'Mar',
+        apr: 'Apr',
+        may: 'Maj',
+        jun: 'Jun',
+        jul: 'Jul',
+        aug: 'Aug',
+        sep: 'Sep',
+        oct: 'Okt',
+        nov: 'Nov',
+        dec: 'Dec'
+      }
+    },
+    select: {
+      loading: 'Laddar',
+      noMatch: 'Hittade inget',
+      noData: 'Ingen data',
+      placeholder: 'Välj'
+    },
+    cascader: {
+      noMatch: 'Hittade inget',
+      loading: 'Laddar',
+      placeholder: 'Välj',
+      noData: 'Ingen data'
+    },
+    pagination: {
+      goto: 'Gå till',
+      pagesize: '/sida',
+      total: 'Totalt {total}',
+      pageClassifier: ''
+    },
+    messagebox: {
+      title: 'Meddelande',
+      confirm: 'OK',
+      cancel: 'Avbryt',
+      error: 'Felaktig inmatning'
+    },
+    upload: {
+      deleteTip: 'press delete to remove', // to be translated
+      delete: 'Radera',
+      preview: 'Förhandsvisa',
+      continue: 'Fortsätt'
+    },
+    table: {
+      emptyText: 'Inga Data',
+      confirmFilter: 'Bekräfta',
+      resetFilter: 'Återställ',
+      clearFilter: 'Alla',
+      sumText: 'Summa'
+    },
+    tree: {
+      emptyText: 'Ingen data'
+    },
+    transfer: {
+      noMatch: 'Hittade inget',
+      noData: 'Ingen data',
+      titles: ['List 1', 'List 2'], // to be translated
+      filterPlaceholder: 'Enter keyword', // to be translated
+      noCheckedFormat: '{total} items', // to be translated
+      hasCheckedFormat: '{checked}/{total} checked' // to be translated
+    },
+    image: {
+      error: 'FAILED' // to be translated
+    },
+    pageHeader: {
+      title: 'Bakåt' // to be translated
+    },
+    popconfirm: {
+      confirmButtonText: 'Ja',
+      cancelButtonText: 'Nej'
     }
+  }
 };
-
-setLang(lang);
-
-export default lang;

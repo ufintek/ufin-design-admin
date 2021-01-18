@@ -1,48 +1,31 @@
-// Type definitions for iview 3.3.1
-// Project: https://github.com/iview/iview
-// Definitions by: yangdan
-// Definitions: https://github.com/yangdan8/iview.git
-import Vue, { VNode } from "vue";
+import { ElementUIComponent } from './component'
 
-export declare class Alert extends Vue {
-    /**
-     * 警告提示样式，可选值为info、success、warning、error
-     * @default info
-     */
-    type?: "info" | "success" | "warning" | "error";
-    /**
-     * 是否可关闭
-     * @default false
-     */
-    closable?: boolean;
-    /**
-     * 是否显示图标
-     * @default false
-     */
-    "show-icon"?: boolean;
-    /**
-     * 关闭时触发
-     */
-    $emit(eventName: "on-close", event: HTMLElement): this;
-    /**
-     * slot插槽对象
-     */
-    $slots: {
-        /**
-         * 警告提示内容
-         */
-        "": VNode[];
-        /**
-         * 警告提示辅助性文字介绍
-         */
-        desc: VNode[];
-        /**
-         * 自定义图标内容
-         */
-        icon: VNode[];
-        /**
-         * 自定义关闭内容
-         */
-        close: VNode[];
-    };
+export type AlertType = 'success' | 'warning' | 'info' | 'error'
+export type AlertEffect = 'dark' | 'light'
+
+/** Alert Component */
+export declare class ElAlert extends ElementUIComponent {
+  /** Title */
+  title: string
+
+  /** Component type */
+  type: AlertType
+
+  /** Descriptive text. Can also be passed with the default slot */
+  description: string
+
+  /** If closable or not */
+  closable: boolean
+
+  /** whether to center the text */
+  center: boolean
+
+  /** Customized close button text */
+  closeText: string
+
+  /** If a type icon is displayed */
+  showIcon: boolean
+
+  /** Choose effect */
+  effect: AlertEffect
 }

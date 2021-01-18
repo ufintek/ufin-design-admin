@@ -4,7 +4,7 @@
 @import '~scss/helpers/_functions.scss';
 @import '~scss/themes/index.scss';
 
-@mixin ufin-title-page-mixin {
+@mixin yfin-title-page-mixin {
   margin-right: 12px;
   margin-bottom: 0;
   color: rgba(0, 0, 0, 0.85);
@@ -16,7 +16,7 @@
   text-overflow: ellipsis;
 }
 
-@mixin ufin-title-mixin {
+@mixin yfin-title-mixin {
   margin-right: 12px;
   margin-bottom: 0;
   color: rgba(0, 0, 0, 0.85);
@@ -31,24 +31,22 @@
   font-size: 30px;
   line-height: 38px;
 }
-
 @mixin header-h2 {
   font-size: 24px;
   line-height: 32px;
 }
-
 @mixin header-h3 {
   font-size: 20px;
   line-height: 28px;
 }
-
 @mixin header-h4 {
   font-size: 16px;
   line-height: 24px;
 }
-
 @mixin header-h5 {
   font-size: 14px;
   line-height: 22px;
 }
 
+@mixin text-desc {
+}

@@ -1,106 +1,120 @@
-import setLang from '../lang';
-
-const lang = {
-    i: {
-        locale: 'pt-BR',
-        select: {
-            placeholder: 'Selecionar',
-            noMatch: 'Não encontrado',
-            loading: 'Carregando'
-        },
-        table: {
-            noDataText: 'Sem dados',
-            noFilteredDataText: 'Sem dados filtrados',
-            confirmFilter: 'Confirmar',
-            resetFilter: 'Limpar',
-            clearFilter: 'Todos',
-            sumText: 'Sum'
-        },
-        datepicker: {
-            selectDate: 'Selecione a data',
-            selectTime: 'Selecione a hora',
-            startTime: 'Hora inicial',
-            endTime: 'Hora final',
-            clear: 'Limpar',
-            ok: 'Confirmar',
-            datePanelLabel: '[mmmm] de [yyyy]',
-            month: 'Mês',
-            month1: 'Janeiro',
-            month2: 'Fevereiro',
-            month3: 'Março',
-            month4: 'Abril',
-            month5: 'Maio',
-            month6: 'Junho',
-            month7: 'Julho',
-            month8: 'Agosto',
-            month9: 'Setembro',
-            month10: 'Outubro',
-            month11: 'Novembro',
-            month12: 'Dezembro',
-            year: 'Ano',
-            weekStartDay: '0',
-            weeks: {
-                sun: 'Dom',
-                mon: 'Seg',
-                tue: 'Ter',
-                wed: 'Qua',
-                thu: 'Qui',
-                fri: 'Sex',
-                sat: 'Sáb'
-            },
-            months: {
-                m1: 'Jan',
-                m2: 'Fev',
-                m3: 'Mar',
-                m4: 'Abr',
-                m5: 'Mai',
-                m6: 'Jun',
-                m7: 'Jul',
-                m8: 'Ago',
-                m9: 'Set',
-                m10: 'Out',
-                m11: 'Nov',
-                m12: 'Dez'
-            }
-        },
-        transfer: {
-            titles: {
-                source: 'Origem',
-                target: 'Destino'
-            },
-            filterPlaceholder: 'Pesquise aqui',
-            notFoundText: 'Não encontrado'
-        },
-        modal: {
-            okText: 'Confirmar',
-            cancelText: 'Cancelar'
-        },
-        poptip: {
-            okText: 'Confirmar',
-            cancelText: 'Cancelar'
-        },
-        page: {
-            prev: 'Página Anterior',
-            next: 'Próxima Página',
-            total: 'Total',
-            item: 'item',
-            items: 'itens',
-            prev5: 'Voltar 5 Páginas',
-            next5: 'Avançar 5 Páginas',
-            page: '/page',
-            goto: 'Ir para',
-            p: ''
-        },
-        rate: {
-            star: 'Estrela',
-            stars: 'Estrelas'
-        },
-        tree: {
-            emptyText: 'Sem dados'
-        }
+export default {
+  el: {
+    colorpicker: {
+      confirm: 'Confirmar',
+      clear: 'Limpar'
+    },
+    datepicker: {
+      now: 'Agora',
+      today: 'Hoje',
+      cancel: 'Cancelar',
+      clear: 'Limpar',
+      confirm: 'Confirmar',
+      selectDate: 'Selecione a data',
+      selectTime: 'Selecione a hora',
+      startDate: 'Data inicial',
+      startTime: 'Hora inicial',
+      endDate: 'Data final',
+      endTime: 'Hora final',
+      prevYear: 'Ano anterior',
+      nextYear: 'Próximo ano',
+      prevMonth: 'Mês anterior',
+      nextMonth: 'Próximo mês',
+      year: '',
+      month1: 'Janeiro',
+      month2: 'Fevereiro',
+      month3: 'Março',
+      month4: 'Abril',
+      month5: 'Maio',
+      month6: 'Junho',
+      month7: 'Julho',
+      month8: 'Agosto',
+      month9: 'Setembro',
+      month10: 'Outubro',
+      month11: 'Novembro',
+      month12: 'Dezembro',
+      // week: 'semana',
+      weeks: {
+        sun: 'Dom',
+        mon: 'Seg',
+        tue: 'Ter',
+        wed: 'Qua',
+        thu: 'Qui',
+        fri: 'Sex',
+        sat: 'Sab'
+      },
+      months: {
+        jan: 'Jan',
+        feb: 'Fev',
+        mar: 'Mar',
+        apr: 'Abr',
+        may: 'Mai',
+        jun: 'Jun',
+        jul: 'Jul',
+        aug: 'Ago',
+        sep: 'Set',
+        oct: 'Out',
+        nov: 'Nov',
+        dec: 'Dez'
+      }
+    },
+    select: {
+      loading: 'Carregando',
+      noMatch: 'Sem resultados',
+      noData: 'Sem dados',
+      placeholder: 'Selecione'
+    },
+    cascader: {
+      noMatch: 'Sem resultados',
+      loading: 'Carregando',
+      placeholder: 'Selecione',
+      noData: 'Sem dados'
+    },
+    pagination: {
+      goto: 'Ir para',
+      pagesize: '/página',
+      total: 'Total {total}',
+      pageClassifier: ''
+    },
+    messagebox: {
+      title: 'Mensagem',
+      confirm: 'Confirmar',
+      cancel: 'Cancelar',
+      error: 'Erro!'
+    },
+    upload: {
+      deleteTip: 'aperte delete para apagar',
+      delete: 'Apagar',
+      preview: 'Pré-visualizar',
+      continue: 'Continuar'
+    },
+    table: {
+      emptyText: 'Sem dados',
+      confirmFilter: 'Confirmar',
+      resetFilter: 'Limpar',
+      clearFilter: 'Todos',
+      sumText: 'Total'
+    },
+    tree: {
+      emptyText: 'Sem dados'
+    },
+    transfer: {
+      noMatch: 'Sem resultados',
+      noData: 'Sem dados',
+      titles: ['Lista 1', 'Lista 2'],
+      filterPlaceholder: 'Digite uma palavra-chave',
+      noCheckedFormat: '{total} itens',
+      hasCheckedFormat: '{checked}/{total} selecionados'
+    },
+    image: {
+      error: 'Erro ao carregar imagem'
+    },
+    pageHeader: {
+      title: 'Voltar'
+    },
+    popconfirm: {
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não'
     }
+  }
 };
-
-setLang(lang);
-
-export default lang;

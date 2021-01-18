@@ -1,0 +1,37 @@
+/**
+  文本当行省略方法
+
+  @example
+
+  @include utils-ellipsis()
+  @include utils-ellipsis--row()
+  // 多行省略
+  @include utils-ellipsis--rows()
+*/
+@mixin utils-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin utils-ellipsis--row {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis;
+  -moz-text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin utils-ellipsis--rows($row: 2, $width: 100%) {
+  width: $width;
+  height: auto;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: $row;
+  /*! autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: normal;
+}

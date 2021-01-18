@@ -1,66 +1,133 @@
-import { createVue, destroyVM } from '../util';
+import { createTest, createVue, destroyVM } from '../util';
+import Button from 'packages/button';
 
-describe('Button.vue', () => {
+describe('Button', () => {
   let vm;
   afterEach(() => {
     destroyVM(vm);
   });
 
-  it('should render as <a>', done => {
-    vm = createVue(`
-      <Button to="http://www.thinkinfe.tech/">Think in FE</Button>
-    `);
-    expect(vm.$el.tagName).to.equal('A');
-    done();
+  it('create', () => {
+    vm = createTest(Button, {
+      type: 'primary'
+    }, true);
+    let buttonElm = vm.$el;
+    expect(buttonElm.classList.contains('el-button--primary')).to.be.true;
   });
-
-  it('should render as <button>', done => {
-    vm = createVue(`
-      <Button>Think in FE</Button>
-    `);
-    expect(vm.$el.tagName).to.equal('BUTTON');
-    done();
+  it('icon', () => {
+    vm = createTest(Button, {
+      icon: 'el-icon-search'
+    }, true);
+    let buttonElm = vm.$el;
+    expect(buttonElm.querySelector('.el-icon-search')).to.be.ok;
   });
-
-  it('handle with `type` attribute', done => {
-    // should render with `type` attribute
-    // if it is a <button>
-    vm = createVue(`
-      <Button htmlType="reset">Think in FE</Button>
-    `);
-    expect(vm.$el.getAttribute('type')).to.equal('reset');
-
-    // should't render with `type` attribute
-    // if it is a <button>
-    vm = createVue(`
-      <Button to="http://www.thinkinfe.tech/" htmlType="reset">Think in FE</Button>
-    `);
-    expect(vm.$el.getAttribute('type')).to.equal(null);
-    done();
+  it('nativeType', () => {
+    vm = createTest(Button, {
+      nativeType: 'submit'
+    }, true);
+    let buttonElm = vm.$el;
+    expect(buttonElm.getAttribute('type')).to.be.equal('submit');
   });
-
-  it('should change loading state', done => {
+  it('loading', () => {
+    vm = createTest(Button, {
+      loading: true
+    }, true);
+    let buttonElm = vm.$el;
+    expect(buttonElm.classList.contains('is-loading')).to.be.true;
+    expect(buttonElm.querySelector('.el-icon-loading')).to.be.ok;
+  });
+  it('disabled', () => {
+    vm = createTest(Button, {
+      disabled: true
+    }, true);
+    let buttonElm = vm.$el;
+    expect(buttonElm.classList.contains('is-disabled')).to.be.true;
+  });
+  it('size', () => {
+    vm = createTest(Button, {
+      size: 'medium'
+    }, true);
+    let buttonElm = vm.$el;
+    expect(buttonElm.classList.contains('el-button--medium')).to.be.true;
+  });
+  it('plain', () => {
+    vm = createTest(Button, {
+      plain: true
+    }, true);
+    let buttonElm = vm.$el;
+    expect(buttonElm.classList.contains('is-plain')).to.be.true;
+  });
+  it('round', () => {
+    vm = createTest(Button, {
+      round: true
+    }, true);
+    let buttonElm = vm.$el;
+    expect(buttonElm.classList.contains('is-round')).to.be.true;
+  });
+  it('circle', () => {
+    vm = createTest(Button, {
+      circle: true
+    }, true);
+    let buttonElm = vm.$el;
+    expect(buttonElm.classList.contains('is-circle')).to.be.true;
+  });
+  it('click', done => {
+    let result;
     vm = createVue({
-        template: `
-            <Button :loading="loading" @click="fetch">Think in FE</Button>
-        `,
-        data() {
-            return {loading: false};
-        },
-        methods: {
-            fetch() {
-                this.loading = true;
-            }
+      template: `
+        <el-button @click="handleClick"></el-button>
+      `,
+      methods: {
+        handleClick(evt) {
+          result = evt;
         }
-    });
+      }
+    }, true);
     vm.$el.click();
-    vm.$nextTick(() => {
-      expect(vm.$el.classList.contains('ivu-btn-loading')).to.equal(true);
-      const $icons = vm.$el.querySelectorAll('.ivu-icon');
-      expect($icons.length).to.equal(1);
-      expect($icons[0].classList.contains('ivu-load-loop')).to.equal(true);
-      expect($icons[0].classList.contains('ivu-icon-ios-loading')).to.equal(true);
+
+    setTimeout(_ => {
+      expect(result).to.exist;
       done();
-    });
+    }, 20);
+  });
+
+  it('click inside', done => {
+    let result;
+    vm = createVue({
+      template: `
+        <el-button @click="handleClick"><span class="inner-slot"></span></el-button>
+      `,
+      methods: {
+        handleClick(evt) {
+          result = evt;
+        }
+      }
+    }, true);
+    vm.$el.querySelector('.inner-slot').click();
+
+    setTimeout(_ => {
+      expect(result).to.exist;
+      done();
+    }, 20);
+  });
+
+  it('loading implies disabled', done => {
+    let result;
+    vm = createVue({
+      template: `
+        <el-button loading @click="handleClick"><span class="inner-slot"></span></el-button>
+      `,
+      methods: {
+        handleClick(evt) {
+          result = evt;
+        }
+      }
+    }, true);
+    vm.$el.querySelector('.inner-slot').click();
+
+    setTimeout(_ => {
+      expect(result).to.not.exist;
+      done();
+    }, 20);
   });
 });

@@ -1,23 +1,22 @@
 import { createVue, destroyVM } from '../util';
 
-describe('Breadcrumb.vue', () => {
+describe('Breadcrumb', () => {
   let vm;
   afterEach(() => {
     destroyVM(vm);
   });
+
   it('create', done => {
     vm = createVue(`
-      <Breadcrumb separator="<b class='demo-breadcrumb-separator'>=></b>">
-        <Breadcrumb-item href="/">Home4</Breadcrumb-item>
-        <Breadcrumb-item href="/components/breadcrumb">Components</Breadcrumb-item>
-        <Breadcrumb-item>Breadcrumb</Breadcrumb-item>
-      </Breadcrumb>
+      <el-breadcrumb separator=">">
+        <el-breadcrumb-item to="/">首页</el-breadcrumb-item>
+        <el-breadcrumb-item>活动管理</el-breadcrumb-item>
+        <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+        <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+      </el-breadcrumb>
     `);
-    expect(vm.$el.querySelectorAll('.ivu-breadcrumb-item-link').length).to.equal(3);
-
     vm.$nextTick(_ => {
-      // console.log(vm.$el.querySelector('.ivu-breadcrumb-item-separator').innerHTML);
-      expect(vm.$el.querySelector('.ivu-breadcrumb-item-separator').innerHTML).to.equal('<b class="demo-breadcrumb-separator">=&gt;</b>');
+      expect(vm.$el.querySelector('.el-breadcrumb__separator').innerText).to.equal('>');
       done();
     });
   });

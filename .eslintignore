@@ -1,2 +1,11 @@
-src/directives
-src/utils/throttle.js
+src/utils/popper.js
+src/utils/date.js
+examples
+*.sh
+node_modules
+lib
+coverage
+*.md
+*.scss
+*.woff
+*.ttf

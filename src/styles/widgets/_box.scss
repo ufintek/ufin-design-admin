@@ -1,0 +1,47 @@
+/**
+ * Box 盒子
+ *  
+ */
+@import '../themes/index.scss';
+
+
+$box--color: $base--color-text !default;
+$box--background-color: $base--color-white !default;
+$box--radius: $base--border-radius !default;
+$box--shadow: 0 0.5em 1em -0.125em rgba($base--color-shadow, 0.1),
+0 0px 0 1px rgba($base--color-shadow, 0.02) !default;
+$box--padding: 1.25rem !default;
+$box--link-hover-shadow: 0 0.5em 1em -0.125em rgba($base--color-shadow, 0.1),
+0 0 0 1px $base--color-text-hover !default;
+$box--link-active-shadow: inset 0 1px 2px rgba($base--color-shadow, 0.2),
+0 0 0 1px $base--color-text-hover !default;
+
+
+$component-name : #{$component-prefix}box;
+
+
+.#{$component-name} {
+  background-color: $box--background-color;
+  border-radius: $box--radius;
+  box-shadow: $box--shadow;
+  color: $box--color;
+  display: block;
+  padding: $box--padding;
+
+
+  &+& {
+    margin-top: $base--margin;
+  }
+}
+
+a.#{$component-name} {
+
+  &:hover,
+  &:focus {
+    box-shadow: $box--link-hover-shadow;
+  }
+
+  &:active {
+    box-shadow: $box--link-active-shadow;
+  }
+}

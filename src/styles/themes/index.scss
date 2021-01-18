@@ -1,3 +1,11 @@
-// @import "../base/_reset.scss";
+@import "./var.scss";
 
-@import "./default.scss"
+
+@import "../helpers/utils";
+
+@import "./default/config.scss";
+@import "./default/base.scss";
+@import "./default/color.scss";
+@import "./default/layout.scss";
+@import "./default/card.scss";
+@import "./default/page.scss";

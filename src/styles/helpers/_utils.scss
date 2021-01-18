@@ -1,8 +1,3 @@
-@charset "UTF-8";
-
-@import './_config.scss';
-@import '~scss/themes/index.scss';
-
 /**
     设置文字是否能被选中
 
@@ -23,26 +18,23 @@
 
 /**
     清除浮动方法
-
+    
     @注
       需要借助 ::before 和 ::after 伪元素
 
     @example
 
     @include utils-clearfix()
-
+  
 */
 @mixin utils-clearfix {
   $selector: &;
-
   @at-root {
-
     #{$selector}::before,
     #{$selector}::after {
       display: table;
       content: '';
     }
-
     #{$selector}::after {
       clear: both;
     }
@@ -111,10 +103,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 @mixin utils-vertical-center {
   $selector: &;
-
   @at-root {
     #{$selector}::after {
       display: inline-block;
@@ -132,31 +122,27 @@
  */
 
 @mixin scroll-bar($width: 10px) {
-
+  $--scrollbar-thumb-background: #b4bccc;
+  $--scrollbar-track-background: #fff;
   &::-webkit-scrollbar {
     z-index: 11;
     width: $width;
     cursor: pointer;
-
     &:horizontal {
       height: $width;
     }
-
     &-thumb {
       border-radius: $width/2;
       width: $width;
-      background: $scrollbar-scrollbar-thumb--background;
+      background: $--scrollbar-thumb-background;
     }
-
     &-corner {
-      background: $scrollbar-track--background;
+      background: $--scrollbar-track-background;
     }
-
     &-track {
-      background: $scrollbar-track--background;
-
+      background: $--scrollbar-track-background;
       &-piece {
-        background: $scrollbar-track--background;
+        background: $--scrollbar-track-background;
         width: $width;
       }
     }
@@ -178,7 +164,6 @@
     visibility: hidden; //将元素隐藏
     clear: both; //清除浮动
   }
-
   & {
     zoom: 1; //为了兼容IE
   }
@@ -190,18 +175,16 @@
 
 @mixin not-first($block, $top: $base--margin-md) {
   $selector: $block;
-
-  &>#{$selector} {
+  & > #{$selector} {
     margin-top: $top;
     @content;
   }
-
-  &>#{$selector}:first-child {
+  & > #{$selector}:first-child {
     margin-top: 0;
   }
 }
 
-/*
+/* 
     主要文字 样式
 */
 
@@ -211,7 +194,7 @@
   font-weight: 800;
 }
 
-/*
+/* 
     正常文字 样式
 */
 
@@ -220,7 +203,7 @@
   font-size: $base--font-size;
 }
 
-/*
+/* 
     次要文字 样式
 */
 
@@ -233,11 +216,9 @@
 @mixin btn-a {
   color: $base--color-text-main;
   cursor: pointer;
-
   &:hover {
     color: $base--color-text-hover;
   }
-
   &:focus,
   &:active {
     color: $base--color-text-active;
@@ -248,7 +229,6 @@
   color: $base--color-text;
   font-size: $base--font-size;
 }
-
 @mixin m-flex {
   position: relative;
   -webkit-box-flex: 1;

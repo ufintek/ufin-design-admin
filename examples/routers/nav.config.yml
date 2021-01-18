@@ -1,0 +1,52 @@
+zh:
+  guide:
+    - title: 品牌
+      name: Guide
+      items:
+        - title: 色彩
+          file: guide/color
+          name: Color
+        - title: 字体
+          file: guide/typography
+          name: Typography
+        - title: 间距
+          file: guide/guide-compose
+          name: guide-compose
+        - title: 布局
+          file: guide/layout
+          name: Layout
+        - title: 弹窗
+          file: guide/dialog
+          name: dialog
+
+  components:
+    - title: 组件
+      name: component
+      groups:
+        - title: 概述
+          items:
+            - title: 介绍
+              file: components/Introduction/introduction
+              name: Introduction
+            - title: 快速开始
+              file: components/Introduction/quickstart
+              name: quickstart
+            - title: 更新日志
+              file: components/Introduction/changelog
+              name: changelog
+
+        - title: 样式类
+          items:
+            - title: Panel
+              file: components/css/panel
+              name: CssPanel
+            - title: Box(盒子)
+              file: components/css/box
+              name: CssBox
+            - title: Display(显隐)
+              file: components/css/display
+              name: CssDisplay
+            - title: Ellipsis(省略)
+              file: components/css/ellipsis
+              name: CssEllipsis
+

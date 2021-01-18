@@ -1,0 +1,157 @@
+/**
+ * Panel面板
+ *  
+ */
+@import '../themes/index.scss';
+
+$component-name : #{$component-prefix}panel;
+
+$component : "panel";
+
+
+
+$panel--heading-padding : 16px $base--padding;
+$panel--desc-color : $base--color-text-secondary;
+$panel--desc-size : $base--font-size-small;
+
+
+.#{$component-name} {
+
+  border-radius: $base--border-radius;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .02);
+  font-size: 1rem;
+
+  @each $name,
+  $components in $base--color-names {
+
+    $color: nth($components, 1);
+    $color-invert: nth($components, 2);
+
+    &.is-#{$name} {
+
+      .#{$component-name}-heading {
+        background-color: $color-invert;
+        color: $color;
+
+        &>.#{$component}-title {
+          color: $color;
+
+        }
+      }
+    }
+  }
+
+  &-heading {
+    position: relative;
+    border-radius: $base--border-radius $base--border-radius 0 0;
+    color: $base--color-text;
+    border-bottom: $base--border;
+    border-bottom-color: $base--color-border;
+
+    .#{$component}-title {
+      // color: $base--color-text;
+      border-color: $primary-7;
+      padding: $panel--heading-padding;
+      line-height: 24px;
+      display: inline-block;
+
+    }
+
+    .#{$component}-desc {
+      color: $panel--desc-color;
+      font-size: $panel--desc-size;
+      padding-left: $base--padding-mini;
+
+      &.is-horizontal {
+        display: block;
+        padding-left: 0;
+        padding-top: $base--padding-mini;
+      }
+
+    }
+
+    .#{$component}-actions {
+      position: absolute;
+      top: 50%;
+      right: $base--padding;
+      z-index: 1;
+      margin: auto;
+      transform: translate(0, -50%);
+      display: flex;
+
+
+      .el-button+.el-dropdown {
+        margin-left: $base--padding-small;
+      }
+
+    }
+
+    ul.#{$component}-actions {
+      list-style: none;
+
+      li {
+        margin-left: $base--margin-small;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+
+    &+.panel-tips {}
+
+
+
+
+  }
+
+
+
+  &-body {
+    padding: $base--padding;
+  }
+
+  &-footer {
+    padding: $base--padding;
+  }
+
+
+  &-block {
+    align-items: center;
+    color: $base--color-text;
+    display: flex;
+    justify-content: flex-start;
+    padding: $base--padding-small $base--padding;
+
+    &:not(:last-child) {
+      border-bottom: $base--border;
+    }
+  }
+
+  &-body:not(:last-child),
+  &-block:not(:last-child),
+  &-tabs:not(:last-child) {
+    border-bottom: $base--border;
+  }
+
+  &-tabs {
+    padding: $base--padding-small 0 0 0;
+
+    .el-tabs__header.is-top {
+      margin-bottom: 0;
+
+      .el-tabs__nav {
+        padding: 0 $base--padding;
+      }
+    }
+  }
+
+
+  &+& {
+    margin-top: $base--margin;
+  }
+
+
+
+
+}

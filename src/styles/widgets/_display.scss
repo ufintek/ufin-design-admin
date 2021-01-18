@@ -1,0 +1,68 @@
+/**
+ * display
+ *  
+ */
+@import '../themes/index.scss';
+
+$component-name : #{$component-prefix}display;
+
+/*
+     各媒体类型下的 文本
+     - sm
+       ufin-text-sm-justify
+       ufin-text-sm-left
+       ufin-text-sm-right
+       ufin-text-sm-center
+     - md
+       ufin-text-md-justify
+       ufin-text-md-left
+       ufin-text-md-right
+       ufin-text-md-center
+     - lg
+       ufin-text-lg-justify
+       ufin-text-lg-left
+       ufin-text-lg-right
+       ufin-text-lg-center
+     - xl
+       ufin-text-xl-justify
+       ufin-text-xl-left
+       ufin-text-xl-right
+       ufin-text-xl-center
+ 
+   */
+@mixin displayMixin($name) {
+
+  .#{$component-name}#{$name}-none {
+    display: none !important;
+  }
+
+  .#{$component-name}#{$name}-inline {
+    display: inline !important;
+  }
+
+  .#{$component-name}#{$name}-inline-block {
+    display: inline-block !important;
+  }
+
+  .#{$component-name}#{$name}-block {
+    display: block !important;
+  }
+
+  .#{$component-name}#{$name}-flex {
+    display: flex !important;
+  }
+
+  .#{$component-name}#{$name}-inline-flex {
+    display: inline-flex !important;
+  }
+
+}
+
+@include displayMixin("");
+
+@each $mediaName, $mediaSize in $base--media-values {
+  @media screen and (min-width: $mediaSize) {
+    $name : -#{$mediaName};
+    @include displayMixin($name);
+  }
+}

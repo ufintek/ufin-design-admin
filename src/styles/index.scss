@@ -1,29 +1,16 @@
-@charset 'utf-8';
 
-@import './base/_reset.scss';
-@import './base/_base.scss';
-/*
-    Helpers
-  */
-
-/*
-    Components
-  */
-  @import './components/panel.scss';
-  @import './components/flex.scss';
-  @import './components/ellipsis.scss';
-  @import './components/page.scss';
-  @import './components/form.scss';
-  @import './components/grid.scss';
-  @import './components/card.scss';
-  @import './components/dialog.scss';
+@import "./base/normalize.scss";
+@import "./base/base.scss";
+@import "./base/docs.scss";
 
 
-/*
-  Pages
-  */
 
-/*
-    Layout
-  */
-@import './layout/index.scss';
+/******************************************************************
+ *  组件
+ ****************************************************************/
+@import "./widgets/_grid.scss";
+@import "./widgets/_box.scss";
+@import "./widgets/_panel.scss";
+@import "./widgets/_ellipsis.scss";
+@import "./widgets/_text.scss";
+@import "./widgets/_display.scss";

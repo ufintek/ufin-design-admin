@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import iView from '../../src/index';
+import Element from 'main/index.js';
 
-Vue.use(iView);
+Vue.use(Element);
 
 let id = 0;
 
@@ -14,13 +14,12 @@ const createElm = function() {
   return elm;
 };
 
-const pad = (nr) => nr < 10 ? '0' + nr : nr;
-
 /**
  * 回收 vm
  * @param  {Object} vm
  */
-exports.destroyVM = function(vm) {
+export const destroyVM = function(vm) {
+  vm.$destroy && vm.$destroy();
   vm.$el &&
   vm.$el.parentNode &&
   vm.$el.parentNode.removeChild(vm.$el);
@@ -32,13 +31,11 @@ exports.destroyVM = function(vm) {
  * @param  {Boolean=false} mounted 是否添加到 DOM 上
  * @return {Object} vm
  */
-exports.createVue = function(Compo, mounted = false) {
-  const elm = createElm();
-
+export const createVue = function(Compo, mounted = false) {
   if (Object.prototype.toString.call(Compo) === '[object String]') {
     Compo = { template: Compo };
   }
-  return new Vue(Compo).$mount(mounted === false ? null : elm);
+  return new Vue(Compo).$mount(mounted === false ? null : createElm());
 };
 
 /**
@@ -49,7 +46,7 @@ exports.createVue = function(Compo, mounted = false) {
  * @param  {Boolean=false} mounted  - 是否添加到 DOM 上
  * @return {Object} vm
  */
-exports.createTest = function(Compo, propsData = {}, mounted = false) {
+export const createTest = function(Compo, propsData = {}, mounted = false) {
   if (propsData === true || propsData === false) {
     mounted = propsData;
     propsData = {};
@@ -60,41 +57,13 @@ exports.createTest = function(Compo, propsData = {}, mounted = false) {
 };
 
 /**
- * Transform Date string (yyyy-mm-dd hh:mm:ss) to Date object
- * @param {String}
- */
-exports.stringToDate = function(str) {
-  const parts = str.split(/[^\d]/).filter(Boolean);
-  parts[1] = parts[1] - 1;
-  return new Date(...parts);
-};
-
-/**
- * Transform Date to yyyy-mm-dd string
- * @param {Date}
- */
-exports.dateToString = function(d) {
-  return [d.getFullYear(), d.getMonth() + 1, d.getDate()].map(pad).join('-');
-};
-
-/**
- * Transform Date to HH:MM:SS string
- * @param {Date}
- */
-exports.dateToTimeString = function(d){
-  const date = new Date(d);
-  return [date.getHours(), date.getMinutes(), date.getSeconds()].map(pad).join(':');
-
-}
-
-/**
  * 触发一个事件
  * mouseenter, mouseleave, mouseover, keyup, change, click 等
  * @param  {Element} elm
  * @param  {String} name
  * @param  {*} opts
  */
-exports.triggerEvent = function(elm, name, ...opts) {
+export const triggerEvent = function(elm, name, ...opts) {
   let eventName;
 
   if (/^mouse|click/.test(name)) {
@@ -115,21 +84,38 @@ exports.triggerEvent = function(elm, name, ...opts) {
 };
 
 /**
-* Wait for components inner async process, when this.$nextTick is not enough
-* @param {Function} the condition to verify before calling the callback
-* @param {Function} the callback to call when condition is true
-*/
-exports.waitForIt = function waitForIt(condition, callback) {
-  if (condition()) callback();
-  else setTimeout(() => waitForIt(condition, callback), 50);
+ * 触发 “mouseup” 和 “mousedown” 事件
+ * @param {Element} elm
+ * @param {*} opts
+ */
+export const triggerClick = function(elm, ...opts) {
+  triggerEvent(elm, 'mousedown', ...opts);
+  triggerEvent(elm, 'mouseup', ...opts);
+
+  return elm;
 };
 
 /**
-* Call a components .$nextTick in a promissified way
-* @param {Vue Component} the component to work with
-*/
-exports.promissedTick = component => {
-  return new Promise((resolve, reject) => {
-    component.$nextTick(resolve);
-  });
+ * 触发 keydown 事件
+ * @param {Element} elm
+ * @param {keyCode} int
+ */
+export const triggerKeyDown = function(el, keyCode) {
+  const evt = document.createEvent('Events');
+  evt.initEvent('keydown', true, true);
+  evt.keyCode = keyCode;
+  el.dispatchEvent(evt);
 };
+
+/**
+ * 等待 ms 毫秒，返回 Promise
+ * @param {Number} ms
+ */
+export const wait = function(ms = 50) {
+  return new Promise(resolve => setTimeout(() => resolve(), ms));
+};
+
+/**
+ * 等待一个 Tick，代替 Vue.nextTick，返回 Promise
+ */
+export const waitImmediate = () => wait(0);

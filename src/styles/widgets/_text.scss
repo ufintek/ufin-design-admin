@@ -1,0 +1,115 @@
+/**
+ * Text 文本
+ *  
+ */
+@import '../themes/index.scss';
+
+$component-name : #{$component-prefix}text;
+
+
+.#{$component-name} {
+
+  &-justify {
+    text-align: justify !important;
+  }
+
+  // 左对齐
+  &-left {
+    text-align: left !important;
+  }
+
+  // 右对齐
+  &-right {
+    text-align: right !important;
+  }
+
+  // 居中对齐
+  &-center {
+    text-align: center !important;
+  }
+
+  // 文本不换行
+  &-nowrap {
+    text-align: nowrap !important;
+  }
+
+  // 转小写
+  &-lowercase {
+    text-align: lowercase !important;
+  }
+
+  // 转大写
+  &-uppercase {
+    text-align: uppercase !important;
+  }
+
+  // 文本中的每个单词以大写字母开头。
+  &-capitalize {
+    text-transform: capitalize !important;
+  }
+
+  // 斜体
+  &-italic {
+    font-style: italic !important;
+  }
+
+  /*
+    各文本粗细
+      - ufin-text-bold
+      - ufin-text-normal
+      - ufin-text-light
+  */
+  @each $size, $sizeValue in ('bold' : 700, 'normal' : 400, 'light' : 300) {
+    &-#{$size} {
+      font-weight: $sizeValue !important;
+    }
+  }
+
+  /*
+    各媒体类型下的 文本
+    - sm
+      ufin-text-sm-justify
+      ufin-text-sm-left
+      ufin-text-sm-right
+      ufin-text-sm-center
+    - md
+      ufin-text-md-justify
+      ufin-text-md-left
+      ufin-text-md-right
+      ufin-text-md-center
+    - lg
+      ufin-text-lg-justify
+      ufin-text-lg-left
+      ufin-text-lg-right
+      ufin-text-lg-center
+    - xl
+      ufin-text-xl-justify
+      ufin-text-xl-left
+      ufin-text-xl-right
+      ufin-text-xl-center
+
+  */
+  @each $mediaSize in ("sm", "md", "lg", "xl") {
+    @media screen and (min-width: $mediaSize) {
+      &-#{$mediaSize}-justify {
+        text-align: justify !important;
+      }
+
+      // 左对齐
+      &-#{$mediaSize}-left {
+        text-align: left !important;
+      }
+
+      // 右对齐
+      &-#{$mediaSize}-right {
+        text-align: right !important;
+      }
+
+      // 居中对齐
+      &-#{$mediaSize}-center {
+        text-align: center !important;
+      }
+    }
+  }
+
+}

@@ -1,18 +1,24 @@
  @charset 'utf-8';
 
 
- /*
+/*
     这边设计一些全局系统变量
 */
 
- // 组件前缀
-$component-prefix: 'ufin-';
 
- // 页面样式前缀
-$page-prefix : 'ucall-';
+$--common-gridPrefix : "g";
+$--common-modulePrefix : "m";
+$--common-utilsPrefix : "u";
+$--common-componentPrefix : "yjz";
+$--common-functionPrefix : "f";
+// 组件状态前缀  is-disabled...
+$--common-statePrefix : "is-";
+//所有的基础组件的 前缀
+$--common-baseComponent : "ui";
+// $--common-module : "m";
 
+
+$namespace: 'el';
 $element-separator: '__';
-
 $modifier-separator: '--';
-
 $state-prefix: 'is-';

@@ -1,36 +1,43 @@
 {
-    "presets": [
+  "presets": [
+    [
+      "env",
+      {
+        "loose": true,
+        "modules": false,
+        "targets": {
+          "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+        }
+      }
+    ],
+    "stage-2"
+  ],
+  "plugins": ["transform-vue-jsx"],
+  "env": {
+    "utils": {
+      "presets": [
         [
-            "@babel/preset-env",
-            {
-                "loose": false,
-                "modules": "commonjs",
-                "spec": true,
-                "targets": {
-                    "browsers": [
-                        "last 3 Chrome versions",
-                        "last 3 Firefox versions",
-                        "Safari >= 10",
-                        "Explorer >= 11",
-                        "Edge >= 12",
-                        "iOS >= 10",
-                        "Android >= 6"
-                    ]
-                },
-                "useBuiltIns": "usage",
-                "debug": false
+          "env",
+          {
+            "loose": true,
+            "modules": "commonjs",
+            "targets": {
+              "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
             }
-        ]
-    ],
-    "plugins": [
-        "dynamic-import-node",
-        "@babel/plugin-transform-runtime",
-        "@babel/plugin-transform-property-mutators",
-        "@babel/plugin-proposal-object-rest-spread",
-        "@babel/plugin-proposal-class-properties",
-        "@babel/plugin-transform-classes",
-        "@babel/plugin-syntax-jsx",
-        "transform-vue-jsx"
-    ],
-    "comments": false
+          }
+        ],
+      ],
+      "plugins": [
+        ["module-resolver", {
+          "root": ["element-ui"],
+          "alias": {
+            "element-ui/src": "element-ui/lib"
+          }
+        }]
+      ]
+    },
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  }
 }

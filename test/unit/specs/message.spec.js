@@ -1,64 +1,115 @@
-import {createVue, destroyVM, waitForIt} from '../util';
+import { triggerEvent } from '../util';
+import Message from 'packages/message';
 
-describe('Message.vue', () => {
-  let vm;
+describe('Message', () => {
   afterEach(() => {
-    destroyVM(vm);
-  });
-
-  it('should open a info message by default', done => {
-    vm = createVue({render: () => {}});
-    const testMessage = 'Hello world!';
-    let messageContainer = null;
-    vm.$Message.info({
-      content: testMessage,
-      duration: 200 // too long so we can test
-    });
-
-    const selector = '.ivu-message-notice-content-text .ivu-message-info';
-    const checkMessageOpens = () => (messageContainer = document.querySelector(selector));
-
-    waitForIt(checkMessageOpens, function() {
-      expect(messageContainer.textContent.trim()).to.equal(testMessage);
-      messageContainer.parentElement.removeChild(messageContainer);
-      done();
-    });
-  });
-
-  it('should open specific messages of different types', function(done) {
-    vm = createVue({render: () => {}});
-    const testMessage = type => `Hello world! this is a ${type} message`;
-    const tests = ['info', 'success', 'warning', 'error', 'loading'].reduce((tests, type) => {
-      return tests.concat({
-        type: type,
-        message: testMessage(type),
-        class: 'ivu-message-' + type
-      });
-    }, []);
-    let domElements = [];
-
-    for (const {type, message} of tests) {
-      vm.$Message[type]({
-        content: message,
-        duration: 10 // long so we can test
-      });
+    const el = document.querySelector('.el-message');
+    if (!el) return;
+    if (el.parentNode) {
+      el.parentNode.removeChild(el);
     }
+    if (el.__vue__) {
+      el.__vue__.$destroy();
+    }
+  });
 
-    const checkAllMessageOpens = () => {
-      domElements = document.querySelectorAll('.ivu-message-custom-content');
-      return domElements.length == tests.length && domElements;
-    };
-
-    waitForIt(checkAllMessageOpens, function() {
-      const verify = {};
-      domElements.forEach(el => {
-        const message = el.textContent.trim();
-        const test = tests.find(test => test.message == message);
-        verify[test.type] = true;
-        expect(el.classList.contains(test.class)).to.equal(true);
-      });
-      expect(Object.keys(verify).length).to.equal(tests.length);
-      done();
+  it('automatically close', done => {
+    Message({
+      message: '灰风',
+      duration: 500
     });
+    const message = document.querySelector('.el-message__content');
+    expect(document.querySelector('.el-message')).to.exist;
+    expect(message.textContent).to.equal('灰风');
+    setTimeout(() => {
+      expect(document.querySelector('.el-message')).to.not.exist;
+      done();
+    }, 1000);
+  });
+
+  it('manually close', done => {
+    Message({
+      message: '夏天',
+      showClose: true
+    });
+    setTimeout(() => {
+      document.querySelector('.el-message__closeBtn').click();
+      setTimeout(() => {
+        expect(document.querySelector('.el-message')).to.not.exist;
+        done();
+      }, 500);
+    }, 500);
+  });
+
+  it('custom icon', done => {
+    Message({
+      message: '夏天',
+      iconClass: 'el-icon-close'
+    });
+    setTimeout(() => {
+      const icon = document.querySelector('.el-message i');
+      expect(icon.classList.contains('el-icon-close')).to.true;
+      done();
+    }, 500);
+  });
+
+  it('html string', () => {
+    Message({
+      message: '<strong>夏天</strong>',
+      dangerouslyUseHTMLString: true
+    });
+    const message = document.querySelector('.el-message strong');
+    expect(message.textContent).to.equal('夏天');
+  });
+
+  it('close all', done => {
+    Message({
+      message: '夏天',
+      duration: 0
+    });
+    Message({
+      message: '淑女',
+      duration: 0
+    });
+    setTimeout(() => {
+      Message.closeAll();
+      setTimeout(() => {
+        expect(document.querySelector('.el-message')).to.not.exist;
+        done();
+      }, 500);
+    }, 500);
+  });
+
+  it('create', () => {
+    Message('娜梅莉亚');
+    expect(document.querySelector('.el-message')).to.exist;
+  });
+
+  it('invoke with type', () => {
+    Message.success('毛毛狗');
+    expect(document.querySelector('.el-message').__vue__.type).to.equal('success');
+  });
+
+  it('center', () => {
+    Message({
+      message: '夏天',
+      center: true,
+      duration: 0
+    });
+    expect(document.querySelector('.el-message').classList.contains('is-center')).to.true;
+  });
+
+  it('reset timer', done => {
+    Message({
+      message: '白灵',
+      duration: 1000
+    });
+    setTimeout(() => {
+      triggerEvent(document.querySelector('.el-message'), 'mouseenter');
+      setTimeout(() => {
+        expect(document.querySelector('.el-message')).to.exist;
+        done();
+      }, 700);
+    }, 500);
   });
 });

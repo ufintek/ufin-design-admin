@@ -1,0 +1,124 @@
+@import "./color.scss";
+
+
+// :root {
+//   --aside-background: #{$layout--aside-background};
+//   --color-primary: #{$blue-6};
+//   --header-height: 48px;
+//   --header-line-height: 32px;
+//   --content-tabs-height: 32px;
+// }
+
+// -------- Colors -----------
+$base--color-primary: $primary-6;
+$base--color-info: #909399;
+$base--color-success: $green-6;
+$base--color-warning: $yellow-6;
+$base--color-danger: $red-6;
+$base--color-processing: $base--color-primary;
+$base--color-white: $grey-1;
+$base--color-disabled: #f5f5f5;
+$base--color-shadow : rgba(#000, 0.85);
+
+// 浅色背景下
+$base--color-title: rgba(#000, 0.85);
+// 主要文字色彩
+$base--color-text-main: rgba(#000, 0.85);
+// 常规文字色彩
+$base--color-text: rgba(#000, 0.65);
+// 次要文字色彩
+$base--color-text-minor: rgba(#000, 0.45);
+// 占位文字色彩
+$base--color-text-placeholder: #c0c4cc;
+// 无效文字色彩
+$base--color-text-disabled: rgba(#000, 0.25);
+// 边框色彩
+$base--color-border: rgba(#000, 0.15);
+// 分割线 色彩
+$base--color-dividers: rgba(#000, 0.9);
+// 背景色彩
+$base--color-background: rgba(#000, 0.4);
+// 表格头部背景色
+$base--color-tableheader: rgba(#000, 0.2);
+
+$base--color-text-dark: rgba(#fff, 0.85);
+
+$base--color-text-secondary-dark: rgba(#fff, 0.65);
+
+$base--color-text-hover: rgba($base--color-primary, 0.8);
+
+$base--color-text-active: $base--color-primary;
+
+$base--color-text-secondary: $base--color-text-minor;
+
+$base--color-heading-dark: rgba(#fff, 0.1);
+
+// 字体相关
+$base--font-family: '"Chinese Quote", -apple-system, BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"';
+$base--font-family-no-number: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif';
+
+// 字体的大小
+$base--font-size-large: 18px;
+
+$base--font-size: 14px;
+
+$base--font-size-small: 12px;
+
+$base--font-size-mini: 12px;
+
+// 字体的行高
+$base--line-height-large: 26px;
+$base--line-height: 22px;
+$base--line-height-small: 20px;
+$base--line-height-mini: 20px;
+
+//--------------------------------------------
+//----- padding 有关
+//--------------------------------------------
+// 默认边框
+$base--padding-mini: 4px;
+$base--padding-small: 8px;
+$base--padding: 16px;
+$base--padding-large: 24px;
+
+//--------------------------------------------
+//----- margin 有关
+//--------------------------------------------
+$base--margin-small: 8px;
+$base--margin: 16px;
+$base--margin-large: 24px;
+
+
+//--------------------------------------------
+//----- border 有关
+//--------------------------------------------
+// 默认边框
+$base--border: 1px solid $base--color-border;
+// 
+$base--border-radius-small: 2px;
+$base--border-radius: 4px;
+
+
+
+$base--page-background: #f0f2f5;
+
+
+$base--color-names : ('primary': ($base--color-white, $base--color-primary),
+  'success': ($base--color-white, $base--color-success),
+  'info': ($base--color-white, $base--color-info),
+  'warning': ($base--color-white, $base--color-warning),
+  'danger': ($base--color-white, $base--color-danger),
+);
+
+$base--sizes : ('mini', 'small', 'medium', 'large');
+
+// 参照了 Bootstrap 的 响应式设计，预设了五个响应尺寸：xs、sm、md、lg 和 xl。
+
+$base--medias : ("xs", "sm", "md", "lg", "xl");
+// 这种缺少 xl 
+$base--media-values : ("xs" : 768px, "sm": 992px, "md": 1200px, "lg": 1920px);
+
+$base--media-xs : 768px;
+$base--media-sm : 992px;
+$base--media-md : 1200px;
+$base--media-lg : 1920px;

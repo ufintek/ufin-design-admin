@@ -144,7 +144,7 @@
 
 
 /*
-  状态管理
+  状态管理   
   @include when(disabled){}   =>   el-button.is-disabled{}
  */
 
@@ -182,7 +182,7 @@
 /*
     生成一个公共样式
     为方便一些常用样式的使用，我们将这些使用率较高的样式剥离出来，按需使用，通常这些选择器具有固定样式表现，比如清除浮动等！不可滥用！
-
+    
  */
 
 @mixin ui($block) {
@@ -222,8 +222,8 @@
  -------------------------- */
 
 @mixin scroll-bar {
-    $scrollbar-scrollbar-thumb--background: #b4bccc;
-    $scrollbar-track--background: #fff;
+    $--scrollbar-thumb-background: #b4bccc;
+    $--scrollbar-track-background: #fff;
     &::-webkit-scrollbar {
         z-index: 11;
         width: 6px;
@@ -233,15 +233,15 @@
         &-thumb {
             border-radius: 5px;
             width: 6px;
-            background: $scrollbar-scrollbar-thumb--background;
+            background: $--scrollbar-thumb-background;
         }
         &-corner {
-            background: $scrollbar-track--background;
+            background: $--scrollbar-track-background;
         }
         &-track {
-            background: $scrollbar-track--background;
+            background: $--scrollbar-track-background;
             &-piece {
-                background: $scrollbar-track--background;
+                background: $--scrollbar-track-background;
                 width: 6px;
             }
         }
